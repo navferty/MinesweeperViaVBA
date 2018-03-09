@@ -1,0 +1,15 @@
+﻿Option Explicit
+
+Private Sub Worksheet_Change(ByVal Target As Range)
+    Application.EnableEvents = False
+    Dim r As Range
+    Set r = Target.Cells(1, 1)
+    If CheckOnField(r) Then
+        If r.Value = "x" Then
+            r.Interior.Color = vbRed
+        Else
+            StepOnCell r
+        End If
+    End If
+    Application.EnableEvents = True
+End Sub
